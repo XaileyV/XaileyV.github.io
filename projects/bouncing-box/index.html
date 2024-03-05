@@ -91,7 +91,9 @@
 			the left side of the screen.
 			*/
         function handleBoxClick() {
-          positionX = 0;
+          var randNum = Math.random() * boardWidth;
+          positionX = randNum;
+          moveBoxTo(positionX);
           points = points + 1;
           changeBoxText(points);
           if ((speed = 10)) {
