@@ -109,16 +109,14 @@
           moveBoxTo(positionX);
           points = points + 1;
           changeBoxText(points);
-          if (speed >= 10) {
+          if (speed > 0) {
             speed = speed + 3;
-          }
-          if (speed === -speed) {
+          } else if (speed === -speed) {
             speed = speed - 3;
           }
-          if (speedY >= 15) {
+          if (speedY > 0) {
             speedY = speedY + 3;
-          }
-          if (speedY === -speedY) {
+          } else if (speedY === -speedY) {
             speedY = speedY - 3;
           }
         }
