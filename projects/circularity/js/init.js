@@ -20,9 +20,16 @@ var init = function (window) {
     var circles = []; //store all circles in one Array
 
     // TODO 2 : Create a function that draws a circle
-
+    function drawCircle() {
+      circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
+      physikz.addRandomVelocity(circle, canvas, 4, 2.5);
+      view.addChild(circle);
+      circles.push(circle);
+    }
     // TODO 3 / 7 : Call the drawCircle() function
-
+    for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++) {
+      drawCircle();
+    }
     ////////////////////////////////////////////////////////////
     ///////////////// PROGRAM LOGIC ////////////////////////////
     ////////////////////////////////////////////////////////////
@@ -34,8 +41,15 @@ var init = function (window) {
         */
     function update() {
       // TODO 4 : Update the circle's position //
+      for (var circle = 0; circle < 100; circle++) {
+        physikz.updatePosition(circles[circle]);
+        game.checkCirclePosition(circles[circle]);
+
+      }
       // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
+        // Function calls deleted and replaced by the loop/iteration above
       // TODO 9 : Iterate over the array
+
     }
 
     /* 
@@ -47,9 +61,18 @@ var init = function (window) {
       // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
       if (circle.x > canvas.width) {
         circle.x = 0;
-      }
+      } //right side off-screen reappear on left
 
       // TODO 6 : YOUR CODE STARTS HERE //////////////////////
+      if (circle.y > canvas.height) {
+        circle.y = 0;
+      } //bottom side off-screen reappear on top
+      if (circle.y < 0) {
+        circle.y = canvas.height;
+      } //top side off-screen reappear on bottom
+      if (circle.x < 0) {
+        circle.x = canvas.width;
+      } //left side off-screen reappear on right
 
       // YOUR TODO 6 CODE ENDS HERE //////////////////////////
     };
