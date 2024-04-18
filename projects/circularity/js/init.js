@@ -41,15 +41,13 @@ var init = function (window) {
         */
     function update() {
       // TODO 4 : Update the circle's position //
-      for (var circle = 0; circle < 100; circle++) {
+      // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
+      // Function calls deleted and replaced by the loop/iteration above
+      // TODO 9 : Iterate over the array
+      for (var circle = 0; circle < circles.length; circle++) {
         physikz.updatePosition(circles[circle]);
         game.checkCirclePosition(circles[circle]);
-
       }
-      // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-        // Function calls deleted and replaced by the loop/iteration above
-      // TODO 9 : Iterate over the array
-
     }
 
     /* 
@@ -67,9 +65,11 @@ var init = function (window) {
       if (circle.y > canvas.height) {
         circle.y = 0;
       } //bottom side off-screen reappear on top
+
       if (circle.y < 0) {
         circle.y = canvas.height;
       } //top side off-screen reappear on bottom
+
       if (circle.x < 0) {
         circle.x = canvas.width;
       } //left side off-screen reappear on right
